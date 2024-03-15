@@ -1,24 +1,24 @@
 import Link from "next/link";
-import NavBarLinks from "./NavBarLinks";
+import Humberger from "./Humburger";
 
 export default function NavBar() {
   const links = [
     {
-      href: "/about",
+      href: "#about",
       title: "About",
     },
     {
-      href: "/contact",
+      href: "#contact",
       title: "Contact",
     },
   ];
   return (
-    <nav className="sticky top-0 bg-primary/95 z-10">
+    <nav className="sticky top-0 bg-primary/95 z-10 relative">
       <div className="flex justify-between items-center m-auto p-8">
         <Link href={"/"} className="text-3xl text-background font-semibold">
           LOGO
         </Link>
-        <NavBarLinks links={links} />
+        <Humberger navLinks={links} />
       </div>
     </nav>
   );
