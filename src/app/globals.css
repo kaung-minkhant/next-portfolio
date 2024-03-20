@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  --background-color: hsl(var(0, 0%, 100%));
+  --foreground-color: hsl(var(222.2, 84%, 4.9%));
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -27,6 +32,9 @@
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
+
+    --hover: 199 86% 64%;
+    --active: 199 86% 64%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;

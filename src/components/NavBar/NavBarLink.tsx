@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 interface NavLinkProps {
   href: string;
   title: string;
+  onclick?: () => any;
+  isActive?: boolean;
 }
 const linkVariant = {
   hover: {
@@ -14,11 +16,12 @@ const linkVariant = {
     y: -5,
   },
 };
-export default function NavLink({ href, title }: NavLinkProps) {
+export default function NavLink({ href, title, onclick, isActive }: NavLinkProps) {
   return (
     <Link
       href={href}
-      className="block py-2 pl-3 pr-4 rounded text-background/50 text-xl"
+      onClick={onclick}
+      className={ `block py-2 pl-3 pr-4 rounded text-xl ${isActive ? "text-background font-bold drop-shadow-md" : "text-background/50"}` }
     >
       <motion.div variants={linkVariant} whileHover='hover'>{title}</motion.div>
     </Link>

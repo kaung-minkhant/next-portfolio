@@ -1,23 +1,25 @@
 import React from "react";
 import PortfolioImage from "@/assets/portfolio.png";
-import Image from "next/image";
-import { Button } from "./ui/button";
 import { Download } from "lucide-react";
 import TypeAnimation from "./textTypingAnimation/TypeAnimation";
 import FloatingImage from "./FloatingImage";
 import GradiantButton from "./GradiantButton";
 
-const HeroSection = () => {
-  const jobList = [
-    'Frontend Developer',
-    'Backend Developer',
-    'Full Stack Developer'
-  ]
+interface HeroProps {
+  name: string;
+  shortDescription: string;
+  jobList: string[];
+}
+const HeroSection = ({
+  name = "cms required",
+  shortDescription,
+  jobList,
+}: HeroProps) => {
   return (
     <section className="grid grid-cols-1 lg:grid-cols-12">
       <div className="col-span-7 text-background place-self-center text-center lg:text-left mt-0 lg:mt-10 space-y-4 lg:space-y-6">
-        <h1 className="text-4xl lg:text-6xl font-extrabold bg-gradient-to-r from-red-400 via-orange-400 to-amber-400 bg-clip-text text-transparent">
-          Hi, I'm Kaung Min Khant
+        <h1 className="text-4xl lg:text-6xl !leading-normal font-extrabold bg-gradient-to-r from-red-400 via-orange-400 to-amber-400 bg-clip-text text-transparent">
+          Hi, I&apos;m {name}
         </h1>
         <div className="">
           <TypeAnimation
@@ -27,15 +29,11 @@ const HeroSection = () => {
         </div>
         <div>
           <span className="text-lg text-xl">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-            repellat saepe doloremque ipsa fugit commodi esse, alias
-            necessitatibus hic modi.
+            {shortDescription && shortDescription}
           </span>
         </div>
         <div className="">
-          <GradiantButton
-            // className="bg-secondary text-secondary-foreground hover:bg-secondary/80 py-7 px-5 w-full sm:w-fit bg-gradient-to-br from-slate-300 hover:from-slate-400 via-slate-400 hover:via-slate-500 to-slate-500 hover:to-slate-600"
-          >
+          <GradiantButton>
             <Download className="mr-2 font-bold" size={20} />
             <span className="text-xl lg:text-2xl font-semibold">
               Download CV

@@ -52,7 +52,7 @@ export default function TypeAnimation({
   }, []);
   return (
     <>
-      <motion.span className={cn("inline", className)} {...props}>
+      <motion.span className={cn("inline", className)}>
         {displayText}
       </motion.span>
       <BlinkingCursor />

@@ -7,6 +7,7 @@ interface Props {
     href: string;
     title: string;
   }[];
+  onclick?: () => any;
 }
 const navOverlayVariants = {
   from: {
@@ -26,7 +27,7 @@ const navOverlayVariants = {
     y: -300,
   },
 };
-export default function MenuOverlay({ links }: Props) {
+export default function MenuOverlay({ links, onclick }: Props) {
   return (
     <motion.div
       className="absolute top-[100%] w-[100%] right-0 bg-primary/90 shadow-xl pb-4 pt-2"
@@ -37,7 +38,7 @@ export default function MenuOverlay({ links }: Props) {
     >
       <ul className="flex flex-col items-center py-4">
         {links.map((link) => (
-          <NavLink href={link.href} title={link.title} key={link.href} />
+          <NavLink onclick={onclick} href={link.href} title={link.title} key={link.href} />
         ))}
       </ul>
     </motion.div>
