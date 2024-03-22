@@ -2,20 +2,8 @@
 import { motion } from "framer-motion";
 
 import { ComponentType, useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
 import { BootstrapIcon, CSSIcon, ExpressJSIcon, FramerIcon, HTMLIcon, JSIcon, MongodbIcon, NextJSIcon, NodeJSIcon, PostgresqlIcon, PythonIcon, ReactIcon, TSIcon, TailwindIcon, ThreeJSIcon, VueJSIcon } from "../ui/icons";
 
-interface IconProps {
-  icon: ComponentType | keyof JSX.IntrinsicElements;
-  size?: number;
-  color?: string;
-  className?: string;
-}
-const Icons = ({ icon: Wrapper, size = 100, color, className }: IconProps) => {
-  return (
-    <Wrapper size={size} className={cn("shrink-0", className)} color={color} />
-  );
-};
 export default function Skills() {
   const ref = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
