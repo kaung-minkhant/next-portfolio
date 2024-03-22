@@ -1,25 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
-import {
-  Aarch64Plain,
-  BootstrapOriginal,
-  Css3Original,
-  ExpressOriginal,
-  FramermotionOriginal,
-  Html5Original,
-  JavascriptOriginal,
-  MongodbOriginal,
-  NextjsOriginal,
-  NodejsOriginal,
-  PostgresqlOriginal,
-  PythonOriginal,
-  ReactOriginal,
-  TailwindcssOriginal,
-  ThreejsOriginal,
-  VuejsOriginal,
-} from "devicons-react";
+
 import { ComponentType, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { BootstrapIcon, CSSIcon, ExpressJSIcon, FramerIcon, HTMLIcon, JSIcon, MongodbIcon, NextJSIcon, NodeJSIcon, PostgresqlIcon, PythonIcon, ReactIcon, TSIcon, TailwindIcon, ThreeJSIcon, VueJSIcon } from "../ui/icons";
 
 interface IconProps {
   icon: ComponentType | keyof JSX.IntrinsicElements;
@@ -28,7 +12,9 @@ interface IconProps {
   className?: string;
 }
 const Icons = ({ icon: Wrapper, size = 100, color, className }: IconProps) => {
-  return <Wrapper size={size} className={cn('shrink-0', className)} color={color} />;
+  return (
+    <Wrapper size={size} className={cn("shrink-0", className)} color={color} />
+  );
 };
 export default function Skills() {
   const ref = useRef<HTMLDivElement>(null);
@@ -75,28 +61,30 @@ export default function Skills() {
           transition: {
             type: "tween",
             duration: 5,
-            ease: 'easeInOut',
+            ease: "easeInOut",
             repeat: Infinity,
             repeatType: "mirror",
             repeatDelay: 1,
           },
         }}
       >
-        <Icons icon={Html5Original} />
-        <Icons icon={Css3Original} />
-        <Icons icon={JavascriptOriginal} />
-        <Icons icon={ReactOriginal} />
-        <Icons icon={NextjsOriginal} />
-        <Icons icon={VuejsOriginal} />
-        <Icons icon={TailwindcssOriginal} />
-        <Icons icon={BootstrapOriginal} />
-        <Icons icon={FramermotionOriginal} />
-        <Icons icon={ThreejsOriginal} className="text-background" />
-        <Icons icon={NodejsOriginal} />
-        <Icons icon={ExpressOriginal} />
-        <Icons icon={MongodbOriginal} />
-        <Icons icon={PostgresqlOriginal} />
-        <Icons icon={PythonOriginal} />
+        <HTMLIcon />
+        <CSSIcon /> 
+        <JSIcon />
+        <TSIcon />
+        <ReactIcon />
+        <NextJSIcon />
+        <VueJSIcon />
+        <TailwindIcon />
+        <BootstrapIcon />
+        <FramerIcon />
+        <ThreeJSIcon />
+        <NodeJSIcon />
+        <ExpressJSIcon />
+        <MongodbIcon />
+        <PostgresqlIcon />
+        <PythonIcon />
+
       </motion.div>
     </div>
   );

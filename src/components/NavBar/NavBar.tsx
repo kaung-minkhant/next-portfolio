@@ -17,7 +17,7 @@ export default function NavBar() {
     }
   ];
   return (
-    <nav className="sticky top-0 bg-primary/95 z-10 shadow-lg">
+    <nav className="sticky top-0 bg-primary/95 z-10 shadow-lg max-h-[20vh]">
       <div className="flex justify-between items-center m-auto p-8 relative">
         <Link href={"/"} className="text-3xl text-background font-semibold">
           LOGO

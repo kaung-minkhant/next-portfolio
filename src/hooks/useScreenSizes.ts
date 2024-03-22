@@ -1,6 +1,6 @@
 import { useMediaQuery } from "./useMediaQuery";
 
-export function useScreenSizes() {
+export default function useScreenSizes() {
   const smallerThan2XL = useMediaQuery("(max-width: 1535px)");
   const smallerThanXL = useMediaQuery("(max-width: 1279px)");
   const smallerThanLG = useMediaQuery("(max-width: 1023px)");

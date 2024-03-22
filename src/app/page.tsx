@@ -1,6 +1,5 @@
 import AboutSection from "@/components/AboutSection";
 import HeroSection from "@/components/HeroSection";
-import NavBar from "@/components/NavBar/NavBar";
 import { getHomePageGlobal } from "@/network/cms";
 
 export default async function Home() {

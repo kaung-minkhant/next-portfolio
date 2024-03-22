@@ -1,7 +1,8 @@
-'use client'
+"use client";
 
-import { useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 export default function EducationMobile() {
   const stepsObject: StepObjectType = {
@@ -51,7 +52,7 @@ export default function EducationMobile() {
   const [progressY, setProgressY] = useState(0);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start center", "end center"],
+    offset: ["start end", "end center"],
   });
   useTransform(() => {
     if (scrollYProgress.get() !== progressY) {
@@ -71,7 +72,46 @@ export default function EducationMobile() {
         }
       });
     }
-    // tick();
+    tick();
   }, [progressY]);
-  return <div></div>
+  return (
+    <div className="w-full">
+      {/* <h2 className="mt-5 text-3xl font-bold ml-[5%]" style={{
+          // boxShadow: "0px 0px 30px #888888"
+        }}>Education</h2> */}
+      <div
+        ref={ref}
+        className={cn(
+          `w-full ${stepsObject.mobileHeight} relative`,
+          ""
+        )}
+        //"border-2 border-red-400"
+      >
+        {stepsObject.steps.map((step) => {
+          return (
+            <Fragment key={step.id}>
+              <motion.div
+                className={`${step.class} p-5 w-[60%] absolute ${step.mobileTimelinePosition} origin-center -translate-y-[50%] transition-all`}
+              >
+                <h2 className="text-3xl font-semibold text-muted-foreground mb-2">
+                  {step.contentOnAnimate}
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  {step.mainContent}
+                </p>
+              </motion.div>
+            </Fragment>
+          );
+        })}
+        <motion.div
+          className="w-2 bg-hover rounded-b-md absolute top-0 left-[10%] bottom-0 origin-center -translate-x-[50%]"
+          style={{ scaleY: scrollYProgress, transformOrigin: "top" }}
+        ></motion.div>
+      </div>
+
+      <div className="w-full h-[20vh] bg-red-300 mt-5" />
+      <div className="w-full h-[20vh] bg-red-300 mt-5" />
+      <div className="w-full h-[20vh] bg-red-300 mt-5" />
+    </div>
+  );
 }

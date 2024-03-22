@@ -3,7 +3,6 @@
 import { motion, useAnimate } from "framer-motion";
 import { Fragment, useEffect } from "react";
 
-
 interface CreateProps {
   stepsObject: StepObjectType;
 }
@@ -92,36 +91,43 @@ export default function Education() {
     const animateSequence = async (stepsObject: StepObjectType) => {
       const steps = stepsObject.steps;
       for (let i = 0; i < steps.length; i++) {
-        await animate(".step" + i, steps[i].animateStep || { opacity: 1 }, {
-          duration:
-            steps[i].animateDuration ||
-            stepsObject.stepTransitionDuration ||
-            0.5,
-        });
+        if (document.querySelector(`.step${i}`)) {
+          await animate(".step" + i, steps[i].animateStep || { opacity: 1 }, {
+            duration:
+              steps[i].animateDuration ||
+              stepsObject.stepTransitionDuration ||
+              0.5,
+          });
+        }
         if (i !== steps.length - 1) {
-          await animate(
-            "#" + steps[i].class + "-transition",
-            steps[i].animateTransition || {
-              width: `${stepsObject.transitionLength}%`,
-            },
-            {
-              duration:
-                steps[i].transitionDuration ||
-                stepsObject.transitionDuration ||
-                0.5,
-            }
-          );
+          if (document.querySelector("#" + steps[i].class + "-transition")) {
+            await animate(
+              "#" + steps[i].class + "-transition",
+              steps[i].animateTransition || {
+                width: `${stepsObject.transitionLength}%`,
+              },
+              {
+                duration:
+                  steps[i].transitionDuration ||
+                  stepsObject.transitionDuration ||
+                  0.5,
+              }
+            );
+          }
         }
       }
       // await animate(scope.current, { opacity: 0 }, {
       //   duration: 0.5
-      // }) 
+      // })
     };
     animateSequence(steps);
   }, []);
   return (
     <div className="h-full overflow-hidden relative flex items-center justify-center">
-      <motion.div className="flex items-center w-full justify-center" ref={scope}>
+      <motion.div
+        className="flex items-center w-full justify-center"
+        ref={scope}
+      >
         <CreateSteps stepsObject={steps} />
       </motion.div>
     </div>

@@ -21,11 +21,11 @@ const ImageVariants = {
 export default function FloatingImage({ image, alt }: Props) {
   return (
     <motion.div
-      className="rounded-full w-[300px] h-[300px] overflow-hidden"
+      className="rounded-full size-[300px] lg:size-[300px] xl:size-[400px] overflow-hidden"
       variants={ImageVariants}
       animate="float"
     >
-      <Image src={image} alt={alt} />
+      <Image src={image} alt={alt} className="lg:scale-100 xl:scale-105" />
     </motion.div>
   );
 }
