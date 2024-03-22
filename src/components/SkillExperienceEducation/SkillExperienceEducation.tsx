@@ -77,7 +77,7 @@ export default function SkillExperienceEducation({}: Props) {
     <div className="w-full h-full flex flex-col">
       <ul className="flex gap-12 justify-between w-[50%] h-[30%] items-center m-auto">
         <AnimatePresence>
-          {navItems.map((item) => {
+          {navItems.map((item): React.ReactNode => {
             const x = useMotionValue(0);
             const y = useMotionValue(0);
             const xText = useTransform(x, (value) => value * 0.5);
