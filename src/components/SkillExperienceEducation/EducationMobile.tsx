@@ -4,50 +4,10 @@ import { cn } from "@/lib/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Fragment, useEffect, useRef, useState } from "react";
 
-export default function EducationMobile() {
-  const stepsObject: StepObjectType = {
-    transitionLength: 30,
-    transitionDuration: 1,
-    size: "w-[20px] h-[20px]",
-    mobileHeight: "h-[850px]",
-    steps: [
-      {
-        id: "0",
-        type: "STEP",
-        class: "step0",
-        transitionDuration: 0.5,
-        contentOnAnimate: "CAE",
-        mainContent:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nulla ratione ullam explicabo esse ipsum perferendis numquam id. Quo aliquid doloremque nesciunt accusamus eos cupiditate quidem officia praesentium minima neque!",
-        contentOnAnimatePostion: "top",
-        mobileTimelinePosition: "top-[220px]",
-        mobileScrollPosition: 0.18,
-      },
-      {
-        id: "1",
-        type: "STEP",
-        class: "step1",
-        contentOnAnimate: "Yangon Technological University",
-        mainContent:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nulla ratione ullam explicabo esse ipsum perferendis numquam id. Quo aliquid doloremque nesciunt accusamus eos cupiditate quidem officia praesentium minima neque!",
-        contentOnAnimatePostion: "bottom",
-        mobileTimelinePosition: "top-[480px]",
-        mobileScrollPosition: 0.45,
-      },
-      {
-        id: "2",
-        type: "STEP",
-        class: "step2",
-        contentOnAnimate: "Auston University",
-        mainContent:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nulla ratione ullam explicabo esse ipsum perferendis numquam id. Quo aliquid doloremque nesciunt accusamus eos cupiditate quidem officia praesentium minima neque!",
-        contentOnAnimatePostion: "top",
-        mobileTimelinePosition: "top-[730px]",
-        mobileScrollPosition: 0.7,
-      },
-    ],
-  };
-
+interface Props {
+  stepsObject: EducationGlobal
+}
+export default function EducationMobile({stepsObject}: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [progressY, setProgressY] = useState(0);
   const { scrollYProgress } = useScroll({
@@ -64,10 +24,10 @@ export default function EducationMobile() {
       stepsObject.steps.map((step) => {
         if (progressY > step.mobileScrollPosition!) {
           (
-            document.querySelector(`.${step.class}`) as HTMLElement
+            document.querySelector(`.step-${step.id}-mobile`) as HTMLElement
           ).style.left = `15%`;
         } else {
-          (document.querySelector(`.${step.class}`) as HTMLElement).style.left =
+          (document.querySelector(`.step-${step.id}-mobile`) as HTMLElement).style.left =
             "-100vw";
         }
       });
@@ -81,8 +41,11 @@ export default function EducationMobile() {
         }}>Education</h2> */}
       <div
         ref={ref}
+        style={{
+          height: `${stepsObject.mobileHeight || 500}px`
+        }}
         className={cn(
-          `w-full ${stepsObject.mobileHeight} relative`,
+          `w-full relative`,
           ""
         )}
         //"border-2 border-red-400"
@@ -91,7 +54,8 @@ export default function EducationMobile() {
           return (
             <Fragment key={step.id}>
               <motion.div
-                className={`${step.class} p-5 w-[60%] absolute ${step.mobileTimelinePosition} origin-center -translate-y-[50%] transition-all`}
+                className={`step-${step.id}-mobile p-5 w-[60%] absolute origin-center -translate-y-[50%] transition-all`}
+                style={{ top: `${step.mobileTimelinePosition}px` }}
               >
                 <h2 className="text-3xl font-semibold text-muted-foreground mb-2">
                   {step.contentOnAnimate}
@@ -109,9 +73,9 @@ export default function EducationMobile() {
         ></motion.div>
       </div>
 
+      {/* <div className="w-full h-[20vh] bg-red-300 mt-5" />
       <div className="w-full h-[20vh] bg-red-300 mt-5" />
-      <div className="w-full h-[20vh] bg-red-300 mt-5" />
-      <div className="w-full h-[20vh] bg-red-300 mt-5" />
+      <div className="w-full h-[20vh] bg-red-300 mt-5" /> */}
     </div>
   );
 }

@@ -15,7 +15,6 @@ enum Tabs {
   Skill = "Skills",
   Education = "Education",
 }
-interface Props {}
 
 interface NavProps {
   item: { name: string; onClick: () => void };
@@ -90,7 +89,10 @@ const NavItem = ({ item, activeTab }: NavProps) => {
     </motion.li>
   );
 };
-export default function SkillExperienceEducation({}: Props) {
+interface Props {
+  setAbout: any
+}
+export default function SkillExperienceEducation() {
   const [activeTab, setActiveTab] = useState("Skills");
   const [isPending, startTransition] = useTransition();
   const skillsContentVariants = {
@@ -122,14 +124,14 @@ export default function SkillExperienceEducation({}: Props) {
 
   return (
     <div className="w-full h-full flex flex-col">
-      <ul className="flex gap-12 justify-between w-[50%] h-[30%] items-center m-auto">
+      <ul className="flex gap-12 justify-between w-[50%] h-[30%] items-center m-auto pt-8">
         <AnimatePresence>
           {navItems.map((item) => (
             <NavItem key={item.name} item={item} activeTab={activeTab} />
           ))}
         </AnimatePresence>
       </ul>
-      <div className="w-full mt-5 flex-grow">
+      <div className="w-full flex-grow">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}

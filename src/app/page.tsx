@@ -12,7 +12,7 @@ export default async function Home() {
         shortDescription={data?.shortDescription}
         jobList={jobList}
       />
-      <AboutSection />
+      <AboutSection longDescription={data?.longDescription} />
     </div>
   );
 }

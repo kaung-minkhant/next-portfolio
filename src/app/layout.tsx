@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar/NavBar";
-import Script from "next/script";
 import BackgroundCanvas from "@/components/BackgroundCanvas";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,7 +25,6 @@ export default function RootLayout({
           {children}
         </main>
       </body>
-      <Script src="" />
     </html>
   );
 }

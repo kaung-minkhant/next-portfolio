@@ -1,12 +1,14 @@
 "use client";
 
-import BackgroundCanvas from "@/components/BackgroundCanvas";
+// import ExperienceCard from "@/components/SkillExperienceEducation/ExperienceCard";
 
 
 export default function Test() {
 
   return (
-    <div></div>
+    <div>
+      {/* <ExperienceCard /> */}
+    </div>
     // <BackgroundCanvas />
   );
 }

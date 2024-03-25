@@ -16,7 +16,7 @@ const HeroSection = ({
   jobList,
 }: HeroProps) => {
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-12 min-h-[80vh]">
+    <section className="grid grid-cols-1 lg:grid-cols-12">
       <div className="col-span-8 text-background place-self-center text-center lg:text-left mt-0 lg:mt-10 space-y-4 lg:space-y-8 xl:space-y-12">
         <h1 className="text-4xl  sm:text-5xl lg:text-6xl whitespace-break-spaces xl:whitespace-nowrap !leading-normal font-extrabold bg-gradient-to-r from-red-400 via-orange-400 to-amber-400 bg-clip-text text-transparent">
 {/* bg-gradient-to-r from-red-400 via-orange-400 to-amber-400 bg-clip-text text-transparent */}

@@ -8,7 +8,7 @@ body {
 }
 
 .about-me-nav {
-  transition: transform 1s var(--elastic-out), background-color 0.5s ease-in;
+  transition: transform 1s var(--elastic-out), background-color 0.2s ease-in;
 }
 
 @layer base {
