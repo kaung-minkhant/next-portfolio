@@ -1,5 +1,6 @@
+import Image from "next/image"
 export function PythonIcon({ width = 100, height = 100 }: IconType) {
-  return  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width={width} height={height} />
+  return  <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width={width} height={height} alt="python icon" />
   // return (
   //   <svg
   //     viewBox="0 0 128 128"

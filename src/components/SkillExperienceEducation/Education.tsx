@@ -140,7 +140,7 @@ const CreateSteps = ({ stepsObject, doneAnimating }: CreateProps) => {
 };
 
 interface Props {
-  setAbout: any;
+  setAbout?: any;
   stepsObject: EducationGlobal;
 }
 export default function Education({stepsObject}: Props) {
@@ -186,7 +186,7 @@ export default function Education({stepsObject}: Props) {
       // })
     };
     animateSequence(stepsObject);
-  }, []);
+  }, [animate, stepsObject]);
   return (
     <div className="h-full overflow-hidden relative flex items-center justify-center">
       <motion.div

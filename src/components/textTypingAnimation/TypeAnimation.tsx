@@ -49,7 +49,7 @@ export default function TypeAnimation({
         }
       },
     });
-  }, []);
+  }, [count, maxLength, textIndex, textList.length, updatedThisRound]);
   return (
     <>
       <motion.span className={cn("inline", className)}>

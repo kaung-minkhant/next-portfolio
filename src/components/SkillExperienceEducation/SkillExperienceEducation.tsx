@@ -90,9 +90,10 @@ const NavItem = ({ item, activeTab }: NavProps) => {
   );
 };
 interface Props {
-  setAbout: any
+  setAbout?: any;
+  stepsObject?: any;
 }
-export default function SkillExperienceEducation() {
+export default function SkillExperienceEducation({stepsObject, setAbout}: Props) {
   const [activeTab, setActiveTab] = useState("Skills");
   const [isPending, startTransition] = useTransition();
   const skillsContentVariants = {
@@ -143,7 +144,7 @@ export default function SkillExperienceEducation() {
             className="h-full p-4"
           >
             {activeTab === Tabs.Skill && <Skills />}
-            {activeTab === Tabs.Education && <Education />}
+            {activeTab === Tabs.Education && <Education stepsObject={stepsObject} />}
           </motion.div>
         </AnimatePresence>
       </div>

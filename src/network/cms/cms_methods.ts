@@ -16,7 +16,7 @@ export const getHomePageGlobal = async (): Promise<HomePageGlobal> => {
     const fetchData = await response.json();
     return fetchData;
   } catch (e) {
-    console.error("In CMS Method: " + e);
+    console.error("In CMS Method (getHomePageGlobal): " + JSON.stringify(e));
     return {
       name: "Kaung Min Khant",
       shortDescription:
@@ -51,7 +51,7 @@ export const getEducationGlobal = async (): Promise<EducationGlobal> => {
     // const fetchData = await response.json();
     // return fetchData;
   } catch (e) {
-    console.error("In CMS Method: " + e);
+    console.error("In CMS Method(getEducationGlobal): " + JSON.stringify(e));
     return {
       transitionLength: 30,
       transitionDuration: 1,
@@ -110,10 +110,11 @@ export const getExperienceCollection = async (): Promise<ExperienceCollection> =
     const fetchData = await response.json();
     return fetchData;
   } catch (e) {
-    console.error("In CMS Method: " + e);
+    console.error("In CMS Method(getExperienceCollection): " + JSON.stringify(e));
     return {
       docs: [
         {
+          id: '1',
           name: "Ackaya Tech Co. Ltd",
           position: "Full Stack Web Developer",
           fromDate: "Sept 2023",
@@ -128,6 +129,7 @@ export const getExperienceCollection = async (): Promise<ExperienceCollection> =
           ],
         },
         {
+          id: '2',
           name: "Ackaya Tech Co. Ltd",
           position: "Full Stack Web Developer",
           fromDate: "Sept 2023",
@@ -142,6 +144,22 @@ export const getExperienceCollection = async (): Promise<ExperienceCollection> =
           ],
         },
         {
+          id: '3',
+          name: "Ackaya Tech Co. Ltd",
+          position: "Full Stack Web Developer",
+          fromDate: "Sept 2023",
+          toDate: "March 2024",
+          content:
+            "This is some lengthy content. Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+          links: [
+            {
+              label: "Facebook",
+              url: "www.google.com",
+            },
+          ],
+        },
+        {
+          id: '4',
           name: "Ackaya Tech Co. Ltd",
           position: "Full Stack Web Developer",
           fromDate: "Sept 2023",

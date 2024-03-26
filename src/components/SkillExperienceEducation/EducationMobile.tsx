@@ -33,7 +33,7 @@ export default function EducationMobile({stepsObject}: Props) {
       });
     }
     tick();
-  }, [progressY]);
+  }, [progressY, stepsObject.steps]);
   return (
     <div className="w-full">
       {/* <h2 className="mt-5 text-3xl font-bold ml-[5%]" style={{

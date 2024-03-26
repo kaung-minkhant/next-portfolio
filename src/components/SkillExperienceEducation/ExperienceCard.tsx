@@ -1,11 +1,10 @@
 "use client";
-import { motion, useMotionValueEvent, useScroll, animate } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll, animate, useAnimationControls } from "framer-motion";
 import { useRef, useState } from "react";
 interface Props {
   experience: ExperienceType;
-  delay: number;
 }
-export default function ExperienceCard({ experience, delay }: Props) {
+export default function ExperienceCard({ experience }: Props) {
   const variant = {
     initial: {
       opacity: 0,
@@ -16,36 +15,22 @@ export default function ExperienceCard({ experience, delay }: Props) {
       x: 0,
     },
   }
-  const ref = useRef<HTMLDivElement>(null);
-  const [show, setShow] = useState(false)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end end"],
-  });
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest >= 0.5) {
-      setShow(true)
-    } else if (latest <= 0.2) {
-      setShow(false)
-    }
-  });
+  const control = useAnimationControls()
+  const itemVariant = {
+    initial: { opacity: 0, y: 40 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+  };
   return (
     <motion.div
-      variants={variant}
-      animate={show ? 'animate' : 'initial'}
-      transition={{
-        delay: delay,
-        duration: 2,
-      }}
-      ref={ref}
-      className="text-background/80 min-w-[300px] border-2 border-border bg-foreground rounded-xl p-8 space-y-5 z-[1] relative"
+      variants={itemVariant}
+      className="text-background/80 min-w-[300px] border-2 border-border bg-foreground rounded-xl p-8 space-y-5 z-[1] relative flex flex-col"
     >
       <h3 className="text-3xl font-semibold">{experience.name}</h3>
       <p className="text-xl italic">{experience.position}</p>
       <p className="text-lg italic">
         {experience.fromDate} - {experience.toDate}
       </p>
-      <div>
+      <div className="flex-grow">
         <p className="text-lg">{experience.content}</p>
       </div>
       <div>
