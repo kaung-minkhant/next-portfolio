@@ -18,13 +18,14 @@ const HeroSection = ({
   return (
     <section className="grid grid-cols-1 lg:grid-cols-12">
       <div className="col-span-8 text-background place-self-center text-center lg:text-left mt-0 lg:mt-10 space-y-4 lg:space-y-8 xl:space-y-12">
-        <h1 className="text-4xl  sm:text-5xl lg:text-6xl whitespace-break-spaces xl:whitespace-nowrap !leading-normal font-extrabold bg-gradient-to-r from-red-400 via-orange-400 to-amber-400 bg-clip-text text-transparent">
-{/* bg-gradient-to-r from-red-400 via-orange-400 to-amber-400 bg-clip-text text-transparent */}
-          Hi, I&apos;m <br className="block sm:hidden" />{name}
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl whitespace-break-spaces xl:whitespace-nowrap !leading-normal font-extrabold bg-gradient-to-r from-red-400 via-orange-400 to-amber-400 bg-clip-text text-transparent">
+          {/* bg-gradient-to-r from-red-400 via-orange-400 to-amber-400 bg-clip-text text-transparent */}
+          Hi, I&apos;m <br className="block sm:hidden whitespace-nowrap" />
+          {name}
         </h1>
         <div className="">
           <TypeAnimation
-            className="text-3xl lg:text-5xl tracking-tight mb-3 mt-3 lg:mb-5 lg:mt-5 font-semibold bg-gradient-to-r from-amber-200 to-yellow-500 bg-clip-text text-transparent"
+            className="text-2xl sm:text-3xl lg:text-5xl tracking-tight mb-3 mt-3 lg:mb-5 lg:mt-5 font-semibold bg-gradient-to-r from-amber-200 to-yellow-500 bg-clip-text text-transparent"
             textList={jobList}
           />
         </div>

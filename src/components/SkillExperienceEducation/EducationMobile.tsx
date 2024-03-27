@@ -1,18 +1,20 @@
 "use client";
 
+import useScreenSizes from "@/hooks/useScreenSizes";
 import { cn } from "@/lib/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Fragment, useEffect, useRef, useState } from "react";
 
 interface Props {
-  stepsObject: EducationGlobal
+  stepsObject: EducationGlobal;
 }
-export default function EducationMobile({stepsObject}: Props) {
+export default function EducationMobile({ stepsObject }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const { smallerThanSM } = useScreenSizes();
   const [progressY, setProgressY] = useState(0);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end center"],
+    offset: ["start center", "end center"],
   });
   useTransform(() => {
     if (scrollYProgress.get() !== progressY) {
@@ -22,13 +24,19 @@ export default function EducationMobile({stepsObject}: Props) {
   useEffect(() => {
     function tick() {
       stepsObject.steps.map((step) => {
-        if (progressY > step.mobileScrollPosition!) {
+        if (
+          progressY >
+          (smallerThanSM
+            ? step.mobileScrollPosition! - 0.1
+            : step.mobileScrollPosition!)
+        ) {
           (
             document.querySelector(`.step-${step.id}-mobile`) as HTMLElement
-          ).style.left = `15%`;
+          ).style.left = smallerThanSM ? "10%" : "15%";
         } else {
-          (document.querySelector(`.step-${step.id}-mobile`) as HTMLElement).style.left =
-            "-100vw";
+          (
+            document.querySelector(`.step-${step.id}-mobile`) as HTMLElement
+          ).style.left = "-100vw";
         }
       });
     }
@@ -42,25 +50,32 @@ export default function EducationMobile({stepsObject}: Props) {
       <div
         ref={ref}
         style={{
-          height: `${stepsObject.mobileHeight || 500}px`
+          height: `${
+            stepsObject.mobileHeight
+              ? stepsObject.mobileHeight + (smallerThanSM ? 20 : 0)
+              : 500
+          }px`,
         }}
-        className={cn(
-          `w-full relative`,
-          ""
-        )}
+        className={cn(`w-full relative`, "")}
         //"border-2 border-red-400"
       >
         {stepsObject.steps.map((step) => {
           return (
             <Fragment key={step.id}>
               <motion.div
-                className={`step-${step.id}-mobile p-5 w-[60%] absolute origin-center -translate-y-[50%] transition-all`}
-                style={{ top: `${step.mobileTimelinePosition}px` }}
+                className={`step-${step.id}-mobile p-5 bg-green-300 w-[90%] sm:bg-blue-400 sm:w-[80%] lg:bg-red-400 lg:w-[60%] absolute origin-center -translate-y-[50%] transition-all`}
+                style={{
+                  top: `${
+                    smallerThanSM
+                      ? step.mobileTimelinePosition! - 20
+                      : step.mobileTimelinePosition
+                  }px`,
+                }}
               >
-                <h2 className="text-3xl font-semibold text-muted-foreground mb-2">
+                <h2 className="text-xl sm:text-3xl font-semibold text-muted-foreground mb-2">
                   {step.contentOnAnimate}
                 </h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-sm sm:text-lg text-muted-foreground">
                   {step.mainContent}
                 </p>
               </motion.div>
@@ -68,7 +83,7 @@ export default function EducationMobile({stepsObject}: Props) {
           );
         })}
         <motion.div
-          className="w-2 bg-hover rounded-b-md absolute top-0 left-[10%] bottom-0 origin-center -translate-x-[50%]"
+          className="w-2 bg-hover rounded-b-md absolute top-0 left-[5%] sm:left-[10%] bottom-0 origin-center -translate-x-[50%]"
           style={{ scaleY: scrollYProgress, transformOrigin: "top" }}
         ></motion.div>
       </div>

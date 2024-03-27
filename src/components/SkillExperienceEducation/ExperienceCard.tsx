@@ -23,15 +23,15 @@ export default function ExperienceCard({ experience }: Props) {
   return (
     <motion.div
       variants={itemVariant}
-      className="text-background/80 min-w-[300px] border-2 border-border bg-foreground rounded-xl p-8 space-y-5 z-[1] relative flex flex-col"
+      className="text-background/80 min-w-[300px] border-2 border-border bg-foreground rounded-xl p-8 space-y-2 sm:space-y-5 z-[1] relative flex flex-col"
     >
-      <h3 className="text-3xl font-semibold">{experience.name}</h3>
-      <p className="text-xl italic">{experience.position}</p>
-      <p className="text-lg italic">
+      <h3 className="text-2xl sm:text-3xl font-semibold">{experience.name}</h3>
+      <p className="text-lg sm:text-xl italic">{experience.position}</p>
+      <p className="text-base sm:text-lg italic">
         {experience.fromDate} - {experience.toDate}
       </p>
       <div className="flex-grow">
-        <p className="text-lg">{experience.content}</p>
+        <p className="text-base sm:text-lg">{experience.content}</p>
       </div>
       <div>
         <ul className="flex gap-5">

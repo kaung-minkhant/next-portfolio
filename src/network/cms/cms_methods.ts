@@ -2,7 +2,6 @@
 const baseUrl = `${process.env.CMS_URL}/api`;
 export const getHomePageGlobal = async (): Promise<HomePageGlobal> => {
   try {
-    throw new Error("");
     const response = await fetch(
       `${baseUrl}/globals/homepage?locale=undefined&draft=false&depth=1`,
       {
@@ -37,19 +36,18 @@ export const getHomePageGlobal = async (): Promise<HomePageGlobal> => {
 
 export const getEducationGlobal = async (): Promise<EducationGlobal> => {
   try {
-    throw new Error("");
-    // const response = await fetch(
-    //   `${baseUrl}/globals/education?locale=undefined&draft=false&depth=1`,
-    //   {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     cache: "no-store",
-    //   }
-    // );
-    // const fetchData = await response.json();
-    // return fetchData;
+    const response = await fetch(
+      `${baseUrl}/globals/education?locale=undefined&draft=false&depth=1`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        cache: "no-store",
+      }
+    );
+    const fetchData = await response.json();
+    return fetchData;
   } catch (e) {
     console.error("In CMS Method(getEducationGlobal): " + JSON.stringify(e));
     return {
